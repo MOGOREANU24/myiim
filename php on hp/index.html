@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование</title>
+</head>
+<body>
+    <h2>Форма бронирования</h2>
+    <form action="send_booking.php" method="post">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="date">Дата:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <input type="submit" value="Отправить бронирование">
+    </form>
+
+    <pre>
+
+        1 
+        2
+        3
+
+
+    </pre>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="email" name="email" placeholder="Your Email" required><br>
+        <textarea name="message" placeholder="Your Message" required></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+   
+    <script>
+        (function() {
+            emailjs.init("iuriejuve2022@gmail.com"); // Замените "user_your_user_id" на ваш user_id из EmailJS
+    
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+    
+                // Получение данных из формы
+                var formData = {
+                    name: this.name.value,
+                    email: this.email.value,
+                    message: this.message.value
+                };
+    
+                // Отправка данных на сервер EmailJS
+                emailjs.send("service_suudeyx", "template_bpgxkrp", formData)
+                    .then(function(response) {
+                        console.log('Success!', response.status, response.text);
+                        alert('Your message has been sent successfully!');
+                    }, function(error) {
+                        console.log('Failed...', error);
+                        alert('Oops! Something went wrong. Please try again later.');
+                    });
+            });
+        })();
+    </script>
+    
+</body>
+</html>
